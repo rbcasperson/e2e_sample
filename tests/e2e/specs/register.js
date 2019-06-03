@@ -1,3 +1,5 @@
+import { errorMessages, invalidEmailAddresses } from './common'
+
 const page_elements = {
   inputs: {
     fullName: '[data-cy="input-full-name"]',
@@ -20,19 +22,6 @@ const validNewUserData = {
   email: 'john@doe.com',
   password: 'password-greater-than-8-chars'
 }
-
-const errorMessages = {
-  invalidEmail: 'Invalid email format',
-  missingFullName: 'Full name is required',
-  invalidPassword: 'Password must be greater than 8 characters',
-  passwordMismatch: 'Password confirmation does not match password'
-}
-
-const invalidEmailAddresses = [
-  'just-a-work',
-  '@onlydomain.com',
-  'missing@extension'
-]
 
 const register = (fullName, email, password, passwordConfirmation) => {
   cy.visit('/register')

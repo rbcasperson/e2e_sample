@@ -1,3 +1,5 @@
+import { errorMessages, invalidEmailAddresses } from './common'
+
 const page_elements = {
   inputs: {
     email: '[data-cy="input-email"]',
@@ -23,18 +25,6 @@ const nonExistentAccountCreds = {
   email: 'correctly@formatted.com',
   password: 'arbitrarypass123'
 }
-
-const errorMessages = {
-  failedAuth: 'Invalid email or password',
-  invalidEmail: 'Invalid email format',
-  missingPassword: 'Must provide a password'
-}
-
-const invalidEmailAddresses = [
-  'just-a-work',
-  '@onlydomain.com',
-  'missing@extension'
-]
 
 const login = (email, password) => {
   cy.visit('/login')
