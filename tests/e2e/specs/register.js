@@ -24,8 +24,6 @@ const validNewUserData = {
 }
 
 const register = (fullName, email, password, passwordConfirmation) => {
-  cy.visit('/register')
-
   if (fullName) {
     cy.get(page_elements.inputs.fullName)
       .clear()
@@ -59,10 +57,12 @@ const validateErrorMessage = expectedMessage => {
 }
 
 describe('The registration page', () => {
-  it('Should contain the required fields', () => {
+  beforeEach(() => {
     // Navigate to login form
     cy.visit('/register')
+  })
 
+  it('Should contain the required fields', () => {
     // Assert that form elements exist
     cy.get(page_elements.inputs.fullName).should('exist')
     cy.get(page_elements.inputs.email).should('exist')
@@ -150,8 +150,6 @@ describe('The registration page', () => {
   })
 
   it('Should provide a working link to the Login page', () => {
-    cy.visit('/register')
-
     // Click the login button
     cy.get(page_elements.text.login)
       .get('a')

@@ -27,8 +27,6 @@ const nonExistentAccountCreds = {
 }
 
 const login = (email, password) => {
-  cy.visit('/login')
-
   if (email) {
     cy.get(page_elements.inputs.email)
       .clear()
@@ -50,10 +48,12 @@ const validateErrorMessage = expectedMessage => {
 }
 
 describe('The login page', () => {
-  it('Should contain the required fields', () => {
+  beforeEach(() => {
     // Navigate to login form
     cy.visit('/login')
+  })
 
+  it('Should contain the required fields', () => {
     // Assert that form elements exist
     cy.get(page_elements.inputs.email).should('exist')
     cy.get(page_elements.inputs.password).should('exist')
